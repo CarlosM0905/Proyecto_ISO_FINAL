@@ -1,0 +1,94 @@
+<!-- 
+<nav class="navbar navbar-dark navbar-expand-md navbar-dark bg-primary">
+    <a href="#" class="navbar-brand"></a>
+
+    <!-- <div class="ml-auto">
+        <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" href="#">Empresas </a>
+                <div class="dropdown-menu">
+                    
+                    <a class="dropdown-item" [routerLink]="[ '/empresas' ]" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" >Buscar</a>
+                    <a class="dropdown-item" [routerLink]="[ '/empresas/agregar' ]" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Agregar</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" href="#">Certificaciones </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Buscar</a>
+                    <a class="dropdown-item" href="#">Agregar</a>
+                </div>
+            </li>
+        </ul>
+    </div> 
+</nav> -->
+
+<div class="mat-app-background">
+  <mat-sidenav-container class="example-container" (backdropClick)="close()" autosize="true">
+    <mat-sidenav mode="side" opened #sidenav (keydown.escape)="close()" disableClose class="sidenav">
+        <div class="row" style="display: flex; justify-content: center;">
+          <h5 class="my-2"> PROYECTO ISO</h5>
+        </div>
+        <div class="row" style="display: flex; justify-content: center;">
+          <mat-icon class="my-2">insert_drive_file</mat-icon>
+        </div>
+
+        
+          <mat-nav-list>
+            <mat-accordion>
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      <mat-icon>business</mat-icon>
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      Empresas
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  
+                    <button style="width: 100%;" mat-flat-button>
+                      <mat-icon>search</mat-icon> Buscar
+                    </button>
+                  
+                  
+                    <button style="width: 100%;" mat-flat-button>
+                      <mat-icon>add</mat-icon> Agregar
+                    </button>
+                </mat-expansion-panel>
+    
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      <mat-icon>done_all</mat-icon>
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      Certificaciones
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+     
+                    <button style="width: 100%;" mat-flat-button [routerLink]="[ '/empresas' ]" routerLinkActive="active"
+                      [routerLinkActiveOptions]="{exact:true}">
+                      <mat-icon>search</mat-icon> Buscar
+                    </button>
+    
+                    <button style="width: 100%;" mat-flat-button [routerLink]="[ '/empresas/agregar' ]"
+                      routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                      <mat-icon>add</mat-icon> Agregar
+                    </button>
+    
+                </mat-expansion-panel>
+              </mat-accordion>
+          </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="row">
+        <div class="col">
+          <button mat-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </div>
+      </div>
+            <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

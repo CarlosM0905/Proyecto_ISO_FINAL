@@ -1,0 +1,91 @@
+<!-- <div class="row bg-primary p-4">
+  <div class="col">
+    <h3 style="color: white !important"><i class="fas fa-list"></i> Listar Empresas</h3>
+  </div>
+</div> -->
+<div class="row d-flex justify-content-center">
+  <div class="col-md-11">
+    <mat-card>
+      <mat-card-header>
+        <div mat-card-avatar> <mat-icon>work</mat-icon> </div>
+        <mat-card-title>Listar Empresas</mat-card-title>
+        <mat-card-subtitle>En esta sección podrá ver las empresas registradas en el sistema.</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+  </div>
+</div>
+
+
+<div class="row pt-4 pb-2 px-4">
+  <div class="col-md-6">
+    <div class="form-group">
+      <label class="control-label" for="inputName">Nombre de la Empresa</label>
+      <input [(ngModel)]="company.com_name" class="form-control" id="inputName" type="text">
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group">
+      <label class="control-label" for="inputAddress">Dirección de la Empresa</label>
+      <input [(ngModel)]="company.com_address" class="form-control" id="inputAddress" type="text">
+    </div>
+  </div>
+</div>
+<div class="row py-2 px-4">
+  <div class="col-md-4">
+    <div class="form-group">
+      <label class="control-label" for="inputProvince">Provincia</label>
+      <input [(ngModel)]="company.com_province" class="form-control" id="inputProvince" type="text">
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group">
+      <label class="control-label" for="inputPhone">Teléfono</label>
+      <input [(ngModel)]="company.com_phone" class="form-control" id="inputPhone" type="text">
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group">
+      <label class="control-label" for="inputCategory">Categoría</label>
+      <input [(ngModel)]="company.com_category" class="form-control" id="inputCategory" type="text">
+    </div>
+  </div>
+</div>
+<div class="row py-2 px-4 d-flex justify-content-end">
+  <div class="col-md-4">
+    <button type="button" class="btn btn-success btn-block" (click)="searchCompanies()" ><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
+  </div>
+</div>
+
+<hr>
+
+<div class="row p-4">
+  <div class="col-md-12">
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover text-center">
+        <thead>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Dirección</th>
+          <th scope="col">Provincia</th>
+          <th scope="col">Teléfono</th>
+          <th scope="col">Categoria</th>
+          <th scope="col">Editar</th>
+          <th scope="col">Eliminar</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let company of companies">
+            <td scope="row">{{company.com_id}}</td>
+            <td>{{company.com_name}}</td>
+            <td>{{company.com_address}}</td>
+            <td>{{company.com_province}}</td>
+            <td>{{company.com_phone}}</td>
+            <td>{{company.com_category}}</td>
+            <td><a class="btn btn-info bt-block text-white" [routerLink]="[ '/empresas/editar', company.com_id]"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+            <td><button class="btn btn-danger bt-block" (click)="deleteCompany(company.com_id)"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
