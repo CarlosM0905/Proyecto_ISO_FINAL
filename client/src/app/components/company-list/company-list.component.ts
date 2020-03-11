@@ -18,6 +18,8 @@ export class CompanyListComponent implements OnInit {
     com_phone: "",
   }
 
+  displayedColumns:string[] = ['nombre','direccion','provincia','telefono','categoria','editar','eliminar'];
+  dataSource;
   constructor(private companiesService : CompaniesService) { }
 
 
@@ -29,7 +31,9 @@ export class CompanyListComponent implements OnInit {
   getCompanies(){
     this.companiesService.getCompanies().subscribe(
       res => {
+        console.log(res);
         this.companies = res;
+        this.dataSource = res;
         console.log(res);
       },
       err => console.error(err)

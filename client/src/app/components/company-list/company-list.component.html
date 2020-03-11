@@ -15,7 +15,99 @@
   </div>
 </div>
 
+<div class="row d-flex justify-content-center my-2">
+  <div class="col-md-11">
+    <mat-card>
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field appearance="standard" style="width: 100%;">
+            <mat-label>Nombre</mat-label>
+            <input matInput>
+            <mat-icon matSuffix>business</mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field appearance="standard" style="width: 100%;">
+            <mat-label>Dirección</mat-label>
+            <input matInput>
+            <mat-icon matSuffix>location_on</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field appearance="standard" style="width: 100%;">
+            <mat-label>Provincia</mat-label>
+            <input matInput>
+            <mat-icon matSuffix>terrain</mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field appearance="standard" style="width: 100%;">
+            <mat-label>Teléfono</mat-label>
+            <input matInput>
+            <mat-icon matSuffix>local_phone</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field appearance="standard" style="width: 100%;">
+            <mat-label>Categoria</mat-label>
+            <input matInput>
+            <mat-icon matSuffix>category</mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6" style="display: flex;
+        justify-content: center;
+        align-items: center;">
+          <button style="width: 50%;" mat-button mat-raised-button color="primary">Buscar <mat-icon>search</mat-icon></button>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
 
+     <div class="row">
+      <table mat-table [dataSource]="dataSource" style="width: 100%;">
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef>Nombre</th>
+          <td mat-cell *matCellDef="let element">{{element.com_name}}</td>
+        </ng-container>
+        <ng-container matColumnDef="direccion">
+          <th mat-header-cell *matHeaderCellDef>Dirección</th>
+          <td mat-cell *matCellDef="let element">{{element.com_address}}</td>
+        </ng-container>
+        <ng-container matColumnDef="provincia">
+          <th mat-header-cell *matHeaderCellDef>Provincia</th>
+          <td mat-cell *matCellDef="let element">{{element.com_province}}</td>
+        </ng-container>
+        <ng-container matColumnDef="telefono">
+          <th mat-header-cell *matHeaderCellDef>Teléfono</th>
+          <td mat-cell *matCellDef="let element">{{element.com_phone}}</td>
+        </ng-container>
+        <ng-container matColumnDef="categoria">
+          <th mat-header-cell *matHeaderCellDef>Categoria</th>
+          <td mat-cell *matCellDef="let element">{{element.com_category}}</td>
+        </ng-container>
+        <ng-container matColumnDef="editar">
+          <th mat-header-cell *matHeaderCellDef>Editar</th>
+          <td mat-cell *matCellDef="let element">uuw</td>
+        </ng-container>
+        <ng-container matColumnDef="eliminar">
+          <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+          <td mat-cell *matCellDef="let element">uwu</td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+     </div>
+
+      
+    </mat-card>
+  </div>
+</div>
+
+<!-- 
 <div class="row pt-4 pb-2 px-4">
   <div class="col-md-6">
     <div class="form-group">
@@ -54,9 +146,8 @@
   <div class="col-md-4">
     <button type="button" class="btn btn-success btn-block" (click)="searchCompanies()" ><i class="fa fa-search" aria-hidden="true"></i> Buscar</button>
   </div>
-</div>
+</div> -->
 
-<hr>
 
 <div class="row p-4">
   <div class="col-md-12">
