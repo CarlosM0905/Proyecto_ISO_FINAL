@@ -1,0 +1,17 @@
+.edit-btn{
+    color: #2E7D32;
+}
+
+.edit-btn:hover{
+    color: #4CAF50;
+    transform: scale(1.6);
+}
+
+.delete-btn{
+    color: #C62828;
+}
+
+.delete-btn:hover{
+    color: #C62828;
+    transform: scale(1.6);
+}
