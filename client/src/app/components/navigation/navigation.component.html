@@ -23,9 +23,9 @@
     </div> 
 </nav> -->
 
-<div class="mat-app-background">
-  <mat-sidenav-container class="example-container" (backdropClick)="close()" autosize="true">
-    <mat-sidenav mode="side" opened #sidenav (keydown.escape)="close()" disableClose class="sidenav">
+
+  <mat-sidenav-container (backdropClick)="close()">
+    <mat-sidenav style="width: 200px !important;" mode="side" opened #sidenav (keydown.escape)="close()" disableClose class="sidenav">
         <div class="row" style="display: flex; justify-content: center;">
           <h5 class="my-2"> PROYECTO ISO</h5>
         </div>
@@ -80,7 +80,7 @@
               </mat-accordion>
           </mat-nav-list>
     </mat-sidenav>
-    <mat-sidenav-content>
+    <mat-sidenav-content style="margin-left: 200px !important;">
       <div class="row">
         <div class="col">
           <button mat-button (click)="sidenav.toggle()">
@@ -88,7 +88,11 @@
           </button>
         </div>
       </div>
-            <router-outlet></router-outlet>
+            <div class="row">
+              <div class="col-md-12">
+                <router-outlet></router-outlet>
+              </div>
+            </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
-</div>
+

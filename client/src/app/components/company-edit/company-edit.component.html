@@ -34,14 +34,14 @@
                     <div class="col-md-6">
                       <mat-form-field appearance="standard" style="width: 100%;">
                         <mat-label>Nombre</mat-label>
-                        <input matInput>
+                        <input matInput [(ngModel)]="company.com_name">
                         <mat-icon matSuffix>business</mat-icon>
                       </mat-form-field>
                     </div>
                     <div class="col-md-6">
                       <mat-form-field appearance="standard" style="width: 100%;">
                         <mat-label>Dirección</mat-label>
-                        <input matInput>
+                        <input matInput [(ngModel)]="company.com_address">
                         <mat-icon matSuffix>location_on</mat-icon>
                       </mat-form-field>
                     </div>
@@ -50,14 +50,14 @@
                     <div class="col-md-6">
                       <mat-form-field appearance="standard" style="width: 100%;">
                         <mat-label>Provincia</mat-label>
-                        <input matInput>
+                        <input matInput [(ngModel)]="company.com_province">
                         <mat-icon matSuffix>terrain</mat-icon>
                       </mat-form-field>
                     </div>
                     <div class="col-md-6">
                       <mat-form-field appearance="standard" style="width: 100%;">
                         <mat-label>Categoría</mat-label>
-                        <input matInput>
+                        <input matInput [(ngModel)]="company.com_category">
                         <mat-icon matSuffix>category</mat-icon>
                       </mat-form-field>
                     </div>
@@ -66,14 +66,14 @@
                     <div class="col-md-6">
                       <mat-form-field appearance="standard" style="width: 100%;">
                         <mat-label>Teléfono</mat-label>
-                        <input matInput>
+                        <input matInput [(ngModel)]="company.com_phone">
                         <mat-icon matSuffix>phone</mat-icon>
                       </mat-form-field>
                     </div>
                     <div class="col-md-6" style="display: flex;
                         justify-content: center;
                         align-items: center;">
-                            <button style="width: 50%;" mat-button mat-raised-button color="primary">Guardar <mat-icon>save</mat-icon></button>
+                            <button style="width: 50%;" (click)="updateCompany()" mat-button mat-raised-button color="primary">Guardar <mat-icon>save</mat-icon></button>
                     </div>
                   </div>
             </mat-card-content>
