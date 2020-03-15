@@ -1,0 +1,10 @@
+.header, .dialog-message {
+    text-transform: lowercase;
+}
+.header::first-letter, .dialog-message::first-letter {
+    text-transform: uppercase;
+}
+.btn-close {
+    background-color: #0D47A1;
+    color: #fff;
+}

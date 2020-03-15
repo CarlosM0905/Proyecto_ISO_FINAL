@@ -34,34 +34,35 @@
           </mat-form-field>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-6">
+      <div class="row my-2">
+        <div class="col-md-4">
           <mat-form-field appearance="standard" style="width: 100%;">
             <mat-label>Provincia</mat-label>
             <input (keyup)="aplicarFiltro($event)" matInput>
             <mat-icon matSuffix>terrain</mat-icon>
           </mat-form-field>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
           <mat-form-field appearance="standard" style="width: 100%;">
             <mat-label>Teléfono</mat-label>
             <input (keyup)="aplicarFiltro($event)" matInput>
             <mat-icon matSuffix>local_phone</mat-icon>
           </mat-form-field>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
           <mat-form-field appearance="standard" style="width: 100%;">
             <mat-label>Categoria</mat-label>
             <input (keyup)="aplicarFiltro($event)" matInput>
             <mat-icon matSuffix>category</mat-icon>
           </mat-form-field>
         </div>
-        <div class="col-md-6" style="display: flex;
-        justify-content: center;
+      </div>
+      <div class="row my-2">
+        
+        <div class="col-md-12" style="display: flex;
+        justify-content: flex-end;
         align-items: center;">
-          <button style="width: 50%;" mat-button mat-raised-button color="primary">Buscar <mat-icon>search</mat-icon></button>
+          <button style="width: 25%;" (click)="generatePdf()" mat-button mat-raised-button color="primary">Imprimir <mat-icon>print</mat-icon></button>
         </div>
       </div>
       <mat-divider></mat-divider>

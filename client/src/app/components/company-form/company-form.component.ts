@@ -42,11 +42,9 @@ export class CompanyFormComponent implements OnInit, OnDestroy {
     // Se abre el modal para confirmar el guardado
     const modalRef = this.modal.open(
       ModalComponent, {
-        width: '250px',
-        height: '250px',
         data: {
-          title: "Empresa guardada correctamente",
-          icon: 'save'
+          title: "¡Exito!",
+          message: "La empresa se guardo correctamente"
         }
       } 
     );

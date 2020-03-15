@@ -1,23 +1,10 @@
-<div class="container text-center">
-    <div class="row">
-        <div class="col-md-12 d-flex justify-content-center">
-            <h3 mat-dialog-title>{{data.title}}</h3>
-        </div>
-    </div>
-    <div mat-dialog-content>
-        <div class="row">
-            <div>
-                
-                    <mat-icon  style="color: #5DADE2; font-size: 48px;" >{{data.icon}}</mat-icon>
-                
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12 d-flex justify-content-center">
-            <div mat-dialog-actions>
-                <button mat-raised-button color="primary" (click)="cerrarModal()">Cerrar</button>
-            </div>
-        </div>
-    </div>
+<div class="header">
+    <h1 mat-dialog-title>{{ data.title }}</h1>
+</div>
+<div mat-dialog-content>
+    <p class="dialog-message">{{ data.message }}</p>
+</div>
+<div mat-dialog-actions style="justify-content: flex-end;">
+    <button class="btn btn-close" style="background-color: #0D47A1;
+    color: #fff; margin-bottom: 20px;" (click)="cerrarModal()">Aceptar</button>
 </div>
