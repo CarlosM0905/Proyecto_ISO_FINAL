@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Company } from '../../models/Company';
 import { CompaniesService } from '../../services/companies.service'
 import { Router } from '@angular/router';
+import { MatDialog} from '@angular/material/dialog'
+import { ModalComponent } from '../modal/modal.component'
 
 @Component({
   selector: 'app-company-form',
   templateUrl: './company-form.component.html',
   styleUrls: ['./company-form.component.css']
 })
-export class CompanyFormComponent implements OnInit {
+export class CompanyFormComponent implements OnInit, OnDestroy {
 
   company: Company = {
     com_id: 0,
@@ -19,19 +21,39 @@ export class CompanyFormComponent implements OnInit {
     com_phone: ''
   };
 
-  constructor(private companiesService: CompaniesService, private router: Router) { }
+  constructor(private companiesService: CompaniesService, private router: Router, public modal: MatDialog) { }
+  
 
   ngOnInit() {
   }
 
-  saveNewCompany(){
-    this.companiesService.saveCompany(this.company).subscribe(
+  ngOnDestroy(): void {
+    console.log("Componente agregar destruido")
+  }
+
+  async saveNewCompany(){
+    await this.companiesService.saveCompany(this.company).subscribe(
       res=>{
         console.log(res);
-        this.router.navigate(['/empresas']);
       },
       err => console.error(err)
+    
     )
+    // Se abre el modal para confirmar el guardado
+    const modalRef = this.modal.open(
+      ModalComponent, {
+        width: '250px',
+        height: '250px',
+        data: {
+          title: "Empresa guardada correctamente",
+          icon: 'save'
+        }
+      } 
+    );
+
+    modalRef.afterClosed().subscribe(result=>{
+      console.log('El modal fue cerrado');
+    })
   }
 
 }

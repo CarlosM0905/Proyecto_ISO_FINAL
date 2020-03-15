@@ -1,50 +1,73 @@
-<!-- 
-<div class="wrapper">
 
-  <nav id="sidebar" class="bg-primary text-white">
-    <div class="sidebar-header">
-      <h3 id="sidebar-title">Proyecto ISO</h3>
-    </div>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button>
+      <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+    </button>
+    <h1>Proyecto ISO </h1>
+    <span class="menu-spacer"></span>
+  </mat-toolbar-row>
 
-    <ul class="list-unstyled components">
-      <p><i class="fas fa-chevron-right"></i><i class="fas fa-chevron-right"></i> Acciones</p>
-      <li>
+</mat-toolbar>
 
-        <a href="#businessSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-city"></i> Empresas</a>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" opened class="mat-elevation-z4">
+    <mat-nav-list>
 
-        <ul class="collapse list-unstyled" id="businessSubmenu">
-          <li> <a class="dropdown-item" [routerLink]="[ '/empresas' ]" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ><i class="fas fa-search"></i> Buscar</a></li>
-          <li><a class="dropdown-item" [routerLink]="[ '/empresas/agregar' ]" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><i class="fas fa-plus-circle"></i> Agregar</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#certificationSubmenu" data-toggle="collapse" aria-expanded="false"
-          class="dropdown-toggle"><i class="fas fa-award"></i> Certificaciones</a>
+      <mat-accordion>
+        <mat-expansion-panel class="mat-elevation-z0">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <mat-icon>business</mat-icon>
+            </mat-panel-title>
+            <mat-panel-description>
+              Empresas
+            </mat-panel-description>
+          </mat-expansion-panel-header>
 
-        <ul class="collapse list-unstyled" id="certificationSubmenu">
-          <li><a href="#"><i class="fas fa-search"></i> Buscar</a></li>
-          <li><a href="#"><i class="fas fa-plus-circle"></i> Agregar</a></li>
-        </ul>
+          <button style="width: 100%;" mat-flat-button [routerLink]="[ '/empresas' ]" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact:true}">
+            <mat-icon>search</mat-icon> Buscar
+          </button>
 
-      </li>
-    </ul>
+          <button style="width: 100%;" mat-flat-button [routerLink]="[ '/empresas/agregar' ]" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact:true}">
+            <mat-icon>add</mat-icon> Agregar
+          </button>
 
-  </nav> -->
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="mat-elevation-z0">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <mat-icon>done_all</mat-icon>
+            </mat-panel-title>
+            <mat-panel-description>
+              Certificaciones
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <button style="width: 100%;" mat-flat-button>
+            <mat-icon>search</mat-icon> Buscar
+          </button>
 
 
-   
-    <!-- <div id="content">
-      <header>
-        <app-navigation></app-navigation>
-      </header>
-      <main>
-        <div class="container">
+          <button style="width: 100%;" mat-flat-button>
+            <mat-icon>add</mat-icon> Agregar
+          </button>
+
+        </mat-expansion-panel>
+      </mat-accordion>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="container-fluid" style="height: 88vh;">
+      <div class="row mt-4">
+        <div class="col-md-12">
           <router-outlet></router-outlet>
         </div>
-      </main>
+      </div>
     </div>
-   -->
-<!-- 
-  </div> -->
-
-  <app-navigation></app-navigation>
+  </mat-sidenav-content>
+</mat-sidenav-container>

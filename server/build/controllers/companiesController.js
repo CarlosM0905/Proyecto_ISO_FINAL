@@ -138,7 +138,7 @@ class CompaniesController {
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            yield database_1.default.query('DELETE FROM company WHERE com_id', [id], (err, result) => {
+            yield database_1.default.query('DELETE FROM company WHERE com_id = ?', [id], (err, result) => {
                 if (err) {
                     res.json({ message: "Something bad happened" });
                 }

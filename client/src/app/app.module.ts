@@ -14,6 +14,9 @@ import { CompanyEditComponent } from './components/company-edit/company-edit.com
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { MaterialModule } from './material/material.module'
+import { DataSharingService } from './services/dataSharing.service';
+import { ModalComponent } from './components/modal/modal.component';
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,8 @@ import { MaterialModule } from './material/material.module'
     NavigationComponent,
     CompanyFormComponent,
     CompanyListComponent,
-    CompanyEditComponent
+    CompanyEditComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -31,8 +35,13 @@ import { MaterialModule } from './material/material.module'
     BrowserAnimationsModule,
     MaterialModule
   ],
+  entryComponents: [
+    ModalComponent
+  ],
   providers: [
-    CompaniesService
+    CompaniesService,
+    DataSharingService,
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}}
   ],
   bootstrap: [AppComponent]
 })

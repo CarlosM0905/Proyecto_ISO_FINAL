@@ -22,14 +22,14 @@
         <div class="col-md-6">
           <mat-form-field appearance="standard" style="width: 100%;">
             <mat-label>Nombre</mat-label>
-            <input matInput>
+            <input (keyup)="aplicarFiltro($event)" matInput>
             <mat-icon matSuffix>business</mat-icon>
           </mat-form-field>
         </div>
         <div class="col-md-6">
           <mat-form-field appearance="standard" style="width: 100%;">
             <mat-label>Dirección</mat-label>
-            <input matInput>
+            <input (keyup)="aplicarFiltro($event)" matInput>
             <mat-icon matSuffix>location_on</mat-icon>
           </mat-form-field>
         </div>
@@ -38,14 +38,14 @@
         <div class="col-md-6">
           <mat-form-field appearance="standard" style="width: 100%;">
             <mat-label>Provincia</mat-label>
-            <input matInput>
+            <input (keyup)="aplicarFiltro($event)" matInput>
             <mat-icon matSuffix>terrain</mat-icon>
           </mat-form-field>
         </div>
         <div class="col-md-6">
           <mat-form-field appearance="standard" style="width: 100%;">
             <mat-label>Teléfono</mat-label>
-            <input matInput>
+            <input (keyup)="aplicarFiltro($event)" matInput>
             <mat-icon matSuffix>local_phone</mat-icon>
           </mat-form-field>
         </div>
@@ -54,7 +54,7 @@
         <div class="col-md-6">
           <mat-form-field appearance="standard" style="width: 100%;">
             <mat-label>Categoria</mat-label>
-            <input matInput>
+            <input (keyup)="aplicarFiltro($event)" matInput>
             <mat-icon matSuffix>category</mat-icon>
           </mat-form-field>
         </div>
@@ -66,7 +66,7 @@
       </div>
       <mat-divider></mat-divider>
 
-     <div class="row" style="text-align: center;">
+     <div class="row" style="text-align: center;" class="mat-elevation-z8 mt-4">
       <table mat-table [dataSource]="dataSource" style="width: 100%;">
         <ng-container matColumnDef="nombre">
           <th style="text-align: center; font-size: 15px; font-weight: bolder;" mat-header-cell *matHeaderCellDef>Nombre</th>
@@ -100,6 +100,10 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
         </table>
+       <div>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+       </div>
+
      </div>
 
       

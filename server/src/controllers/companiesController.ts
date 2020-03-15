@@ -120,7 +120,7 @@ class CompaniesController{
 
     public async delete(req: Request, res: Response): Promise<void>{
         const {id} = req.params;
-        await db.query('DELETE FROM company WHERE com_id', [id], (err, result)=>{
+        await db.query('DELETE FROM company WHERE com_id = ?', [id], (err, result)=>{
             if(err){
                 res.json({message : "Something bad happened"});
             }
