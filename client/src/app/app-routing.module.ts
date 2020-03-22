@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CompanyListComponent } from './components/company-list/company-list.component';
 import { CompanyFormComponent } from './components/company-form/company-form.component';
 import { CompanyEditComponent } from './components/company-edit/company-edit.component';
+import { CertificationListComponent } from './components/certification-list/certification-list.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,9 @@ const routes: Routes = [
   {
     path: 'empresas/editar/:id',
     component: CompanyEditComponent
+  },{
+    path: 'certificaciones',
+    component: CertificationListComponent
   }
 ];
 

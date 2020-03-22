@@ -3,6 +3,7 @@ import db from '../database';
 
 class CompaniesController{
 
+   
 
     // Listar todas las empresas
     public async list(req: Request, res: Response) {

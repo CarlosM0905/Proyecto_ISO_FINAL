@@ -11,6 +11,7 @@ const cors_1 = __importDefault(require("cors"));
 // application routes
 const companiesRoutes_1 = __importDefault(require("./routes/companiesRoutes"));
 const certificationRoutes_1 = __importDefault(require("./routes/certificationRoutes"));
+const listRoutes_1 = __importDefault(require("./routes/listRoutes"));
 class Server {
     constructor() {
         // const app = express();
@@ -31,6 +32,7 @@ class Server {
     routesApplication() {
         this.app.use('/companies', companiesRoutes_1.default);
         this.app.use('/certification', certificationRoutes_1.default);
+        this.app.use('/list', listRoutes_1.default);
     }
     startApplication() {
         // port and callback function

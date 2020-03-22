@@ -36,10 +36,18 @@
       </div>
       <div class="row my-2">
         <div class="col-md-4">
-          <mat-form-field appearance="standard" style="width: 100%;">
+          <!-- <mat-form-field appearance="standard" style="width: 100%;">
             <mat-label>Provincia</mat-label>
             <input (keyup)="aplicarFiltro($event)" matInput>
             <mat-icon matSuffix>terrain</mat-icon>
+          </mat-form-field> -->
+          <mat-form-field appearance="standard" style="width: 100%;">
+            <mat-label>Provincia</mat-label>
+            <mat-select (selectionChange)="aplicarFiltro($event)">
+              <mat-option *ngFor="let province of provinces.message" [value]="province.com_province">
+                {{province.com_province}}
+              </mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
         <div class="col-md-4">
@@ -50,10 +58,18 @@
           </mat-form-field>
         </div>
         <div class="col-md-4">
-          <mat-form-field appearance="standard" style="width: 100%;">
+          <!-- <mat-form-field appearance="standard" style="width: 100%;">
             <mat-label>Categoria</mat-label>
             <input (keyup)="aplicarFiltro($event)" matInput>
             <mat-icon matSuffix>category</mat-icon>
+          </mat-form-field> -->
+          <mat-form-field appearance="standard" style="width: 100%;">
+            <mat-label>Categoria</mat-label>
+            <mat-select (selectionChange)="aplicarFiltro($event)">
+              <mat-option *ngFor="let category of categories.message" [value]="category.com_category">
+                {{category.com_category}}
+              </mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
       </div>

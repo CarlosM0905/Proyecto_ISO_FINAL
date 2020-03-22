@@ -7,6 +7,7 @@ import cors from 'cors';
 // application routes
 import companiesRoutes from './routes/companiesRoutes';
 import certificationRoutes from './routes/certificationRoutes';
+import listRoutes from './routes/listRoutes';
 
 class Server {
 
@@ -32,7 +33,8 @@ class Server {
 
     routesApplication(): void{
         this.app.use('/companies', companiesRoutes);
-        this.app.use('/certification', certificationRoutes)
+        this.app.use('/certification', certificationRoutes);
+        this.app.use('/list', listRoutes);
     }
 
     startApplication(): void{

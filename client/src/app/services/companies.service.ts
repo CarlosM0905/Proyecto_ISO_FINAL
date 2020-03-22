@@ -6,7 +6,6 @@ import { Company } from '../models/Company';
   providedIn: 'root'
 })
 export class CompaniesService {
-
   
 API_URI = 'http://localhost:3000';
   constructor(private http: HttpClient) { }

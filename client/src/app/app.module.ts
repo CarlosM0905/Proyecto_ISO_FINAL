@@ -17,6 +17,7 @@ import { MaterialModule } from './material/material.module'
 import { DataSharingService } from './services/dataSharing.service';
 import { ModalComponent } from './components/modal/modal.component';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import { CertificationListComponent } from './components/certification-list/certification-list.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
     CompanyFormComponent,
     CompanyListComponent,
     CompanyEditComponent,
-    ModalComponent
+    ModalComponent,
+    CertificationListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { CompaniesService } from '../../services/companies.service';
-import { Company } from '../../models/Company';
+import {ListService} from '../../services/list.service'
+import {Company } from '../../models/Company';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {dd} from '../../files/pdfEmpresas'
@@ -16,6 +17,8 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 })
 export class CompanyListComponent implements OnInit, OnDestroy {
 
+  provinces: any =[];
+  categories: any = [];
   companies: any = [];
   company: Company = {
     com_name: "",
@@ -30,16 +33,34 @@ export class CompanyListComponent implements OnInit, OnDestroy {
 
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
 
-  constructor(private companiesService : CompaniesService) {
+  constructor(private companiesService : CompaniesService, private listService: ListService) {
     
    }
   
   ngOnInit() {
     this.getCompanies();
-    console.log(this.companies);
+    this.getCategories();
+    this.getProvinces();
   }
 
-  
+  async getCategories(){
+    await this.listService.getListByParameter('categories').subscribe(
+      res => {
+        this.categories = res;
+        console.log(this.categories.message);
+      }
+    )
+  }
+
+  async getProvinces(){
+    await this.listService.getListByParameter('provinces').subscribe(
+      res => {
+        this.provinces = res;
+        console.log(this.provinces.message);
+      }
+    )
+  }
+
   async getCompanies(){
     await this.companiesService.getCompanies().subscribe(
       res => {
@@ -51,6 +72,8 @@ export class CompanyListComponent implements OnInit, OnDestroy {
     );
   }
 
+
+  
   deleteCompany(id: string){
     this.companiesService.deleteCompany(id).subscribe(
       res => {
@@ -84,9 +107,15 @@ export class CompanyListComponent implements OnInit, OnDestroy {
     console.log("Componente listar destruido")
   }
   
-  aplicarFiltro(event: Event){
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  aplicarFiltro(event){
+    if(event.target){
+      const filterValue = (event.target as HTMLInputElement).value;
+      this.dataSource.filter = filterValue.trim().toLowerCase();
+    }
+    else{
+      let parametro: string = event.value;
+      this.dataSource.filter = parametro.trim().toLowerCase();
+    }
   }
   
 
