@@ -9,7 +9,8 @@ class CertificationRoutes {
     }
 
     configRoute():void{
-        this.router.get('/', certificationController.index);
+        this.router.get('/', certificationController.list);
+        this.router.get('/:parameter', certificationController.listByParameter)
     }
 }
 

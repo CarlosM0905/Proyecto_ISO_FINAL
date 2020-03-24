@@ -1,0 +1,64 @@
+<div style="width: 100%; display: flex;">
+    <mat-icon style="margin: 0 0; padding-top: 2px; color: #3f51b5;">description</mat-icon><h1 style="margin: 0 0;" mat-dialog-title>Detalle de la empresa</h1>
+</div>
+<mat-divider></mat-divider>
+<div class="row my-4 d-flex align-items-center">
+    <div class="col-4 d-flex justify-content-end align-items-center">
+        <p class="text">Nombre: </p>
+    </div>
+    <div class="col-8">
+        <input class="input-text" type="text" [value]="data.com_name" disabled>
+    </div>
+</div>
+<div class="row my-4 d-flex align-items-center">
+    <div class="col-4 d-flex justify-content-end align-items-center">
+        <p class="text">Direccion: </p>
+    </div>
+    <div class="col-8">
+        <input class="input-text" type="text" [value]="data.com_address" disabled>
+    </div>
+</div>
+<div class="row my-4 d-flex align-items-center">
+    <div class="col-4 d-flex justify-content-end align-items-center">
+        <p class="text">Provincia: </p>
+    </div>
+    <div class="col-8">
+        <input class="input-text" type="text" [value]="data.com_province" disabled>
+    </div>
+</div>
+<div class="row my-4 d-flex align-items-center">
+    <div class="col-4 d-flex justify-content-end align-items-center">
+        <p class="text">Teléfono: </p>
+    </div>
+    <div class="col-8">
+        <input class="input-text" type="text" [value]="data.com_phone" disabled>
+    </div>
+</div>
+<div class="row my-4 d-flex align-items-center">
+    <div class="col-4 d-flex justify-content-end align-items-center">
+        <p class="text">Categoria: </p>
+    </div>
+    <div class="col-8">
+        <input class="input-text" type="text" [value]="data.com_category" disabled>
+    </div>
+</div>
+<div class="row my-4 d-flex align-items-center">
+    <div class="col-4 d-flex justify-content-end align-items-center">
+        <p class="text">Certificación: </p>
+    </div>
+    <div class="col-8">
+        <input class="input-text" type="text" [value]="data.cer_name" disabled>
+    </div>
+</div>
+<div class="row my-4 d-flex align-items-center">
+    <div class="col-4 d-flex justify-content-end align-items-center">
+        <p class="text">Descripcion: </p>
+    </div>
+    <div class="col-8">
+        <input class="input-text" type="text" [value]="data.cer_description" disabled>
+    </div>
+</div>
+<mat-divider></mat-divider>
+<div style="width: 100%;" class="d-flex justify-content-center my-3" >
+    <button style="background-color: #3f51b5; color: white;" (click)="cerrarModal()" mat-button>Cerrar</button>
+</div>

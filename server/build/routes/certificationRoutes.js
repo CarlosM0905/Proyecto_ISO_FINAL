@@ -8,7 +8,8 @@ class CertificationRoutes {
         this.configRoute();
     }
     configRoute() {
-        this.router.get('/', certificationController_1.certificationController.index);
+        this.router.get('/', certificationController_1.certificationController.list);
+        this.router.get('/:parameter', certificationController_1.certificationController.listByParameter);
     }
 }
 const certificationRoutes = new CertificationRoutes();

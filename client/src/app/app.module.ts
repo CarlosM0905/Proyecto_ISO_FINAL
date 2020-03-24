@@ -16,8 +16,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MaterialModule } from './material/material.module'
 import { DataSharingService } from './services/dataSharing.service';
 import { ModalComponent } from './components/modal/modal.component';
-import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/dialog';
 import { CertificationListComponent } from './components/certification-list/certification-list.component';
+import { ListService } from './services/list.service';
+import { CertificationService } from './services/certification.service';
+import { ModalInfoComponent } from './components/modal-info/modal-info.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,8 @@ import { CertificationListComponent } from './components/certification-list/cert
     CompanyListComponent,
     CompanyEditComponent,
     ModalComponent,
-    CertificationListComponent
+    CertificationListComponent,
+    ModalInfoComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,14 +39,18 @@ import { CertificationListComponent } from './components/certification-list/cert
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    MatDialogModule
   ],
   entryComponents: [
-    ModalComponent
+    ModalComponent,
+    ModalInfoComponent
   ],
   providers: [
     CompaniesService,
     DataSharingService,
+    ListService,
+    CertificationService,
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}}
   ],
   bootstrap: [AppComponent]

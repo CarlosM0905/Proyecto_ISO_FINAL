@@ -1,0 +1,29 @@
+.info-btn{
+    color: #1565C0;
+    transition: all 0.3s;
+}
+
+.info-btn:hover{
+    transform: scale(1.6,1.6);
+    color: #1E88E5;
+}
+
+.edit-btn{
+    transition: all 0.3s;
+    color: #FFA000;
+}
+
+.edit-btn:hover{
+    transform: scale(1.6,1.6);
+    color: #FFC107;
+}
+
+.delete-btn{
+    transition: all 0.3s;
+    color: #C62828;
+}
+
+.delete-btn:hover{
+    transform: scale(1.6,1.6);
+    color: #E53935;
+}
