@@ -1,0 +1,121 @@
+<div class="row d-flex justify-content-center">
+  <div class="col-md-12 mx-1">
+    <mat-card>
+      <mat-card-header>
+        <div mat-card-avatar>
+          <mat-icon>edit_attributes</mat-icon>
+        </div>
+        <mat-card-title>Editar Certificaciones</mat-card-title>
+        <mat-card-subtitle>En esta sección podrá modificar las certificaciones registradas de una empresa.
+        </mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+  </div>
+</div>
+
+<div class="row d-flex justify-content-center">
+  <div class="col-md-12 mx-1 my-2">
+    <mat-card>
+      <mat-card-header>
+        <div mat-card-avatar>
+          <mat-icon>update</mat-icon>
+        </div>
+        <mat-card-title>
+          Actualizar datos empresa
+        </mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field appearance="standard" style="width: 100%;">
+              <mat-label>Nombre</mat-label>
+              <input matInput [(ngModel)]="company.com_name">
+              <mat-icon matSuffix>business</mat-icon>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="standard" style="width: 100%;">
+              <mat-label>Dirección</mat-label>
+              <input matInput [(ngModel)]="company.com_address">
+              <mat-icon matSuffix>location_on</mat-icon>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <mat-form-field appearance="standard" style="width: 100%;">
+              <mat-label>Provincia</mat-label>
+              <input matInput [(ngModel)]="company.com_province">
+              <mat-icon matSuffix>terrain</mat-icon>
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field appearance="standard" style="width: 100%;">
+              <mat-label>Categoría</mat-label>
+              <input matInput [(ngModel)]="company.com_category">
+              <mat-icon matSuffix>category</mat-icon>
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field appearance="standard" style="width: 100%;">
+              <mat-label>Teléfono</mat-label>
+              <input matInput [(ngModel)]="company.com_phone">
+              <mat-icon matSuffix>phone</mat-icon>
+            </mat-form-field>
+          </div>
+        </div>
+       
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<div class="row d-flex justify-content-center">
+    <div class="col-md-12 mx-1 my-2">
+        <mat-card>
+            <mat-card-header>
+                <div mat-card-avatar>
+                    <mat-icon>done_all</mat-icon>
+                </div>
+                <mat-card-title>Actualizar certificaciones</mat-card-title>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-6">
+                    <mat-list>
+                        <div mat-subheader>Quitar certificación</div>
+                        <mat-list-item *ngFor="let certification of certifications">
+                          <mat-icon mat-list-icon style="color:#283593">label_important</mat-icon>
+                          <div mat-line>{{certification.cer_name}}</div>
+                          <div mat-line> {{certification.cer_description}} </div>
+                          <div> <a type="button" class="delete-btn"  (click)="moverISO(certification)" ><mat-icon>delete</mat-icon></a></div>
+                        </mat-list-item>
+                      </mat-list>
+                </div>
+                <div class="col-md-6">
+                  <mat-list>
+                    <div mat-subheader>Agregar certificación</div>
+                    <mat-list-item *ngFor="let certification of allCertifications">
+                      <mat-icon mat-list-icon style="color:#283593">label_important</mat-icon>
+                      <div mat-line>{{certification.cer_name}}</div>
+                      <div mat-line> {{certification.cer_description}} </div>
+                      <div> <a type="button" class="add-btn" (click)="moverISO(certification)"><mat-icon>add_circle_outline</mat-icon></a></div>
+                    </mat-list-item>
+                  </mat-list>
+                </div>
+            </div>
+            </mat-card-content>
+            <mat-card-actions>
+                 <div class="row">
+                    <div class="col-md-12" style="display: flex;
+                        justify-content: center;
+                        align-items: center;">
+                            <button style="width: 50%;" (click)="guardarCambios()" mat-button mat-raised-button color="primary">Guardar <mat-icon>save</mat-icon></button>
+                    </div> 
+                  </div>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

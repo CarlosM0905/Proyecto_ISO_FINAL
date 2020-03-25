@@ -115,7 +115,9 @@ class CompaniesController{
     
 
     public async create (req: Request, res: Response): Promise<void>{
+        console.log(req.body);
         await db.query('INSERT INTO company SET ?',[req.body]);
+        
         res.json({message: 'The company was created'});
     }
 

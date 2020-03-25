@@ -4,6 +4,12 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material';
 import { ModalInfoComponent } from '../modal-info/modal-info.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
+
+interface ITableFilter{
+    column: string;
+    value: any;
+}
 
 @Component({
   selector: 'app-certification-list',
@@ -12,8 +18,15 @@ import { ModalInfoComponent } from '../modal-info/modal-info.component';
 })
 export class CertificationListComponent implements OnInit {
 
-  
-  displayedColumns:string[] = ['nombre','provincia','telefono','categoria','cer_nombre','informacion','editar','eliminar'];
+  inputName = {column: "com_name",value: ""};
+  inputAddress = {column: "com_address",value: ""};
+  inputProvince = {column: "com_province",value: ""};
+  inputCategory = {column: "com_category",value: ""};
+  inputCertification = {column: "cer_name",value: ""}
+
+  arrayInputs = [this.inputName, this.inputAddress, this.inputProvince, this.inputCategory, this.inputCertification];
+
+  displayedColumns:string[] = ['nombre','direccion','provincia','categoria','cer_nombre','informacion','editar','eliminar'];
   dataSource;
 
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
@@ -23,7 +36,20 @@ export class CertificationListComponent implements OnInit {
   public provinces: any = [];
   public categories: any = [];
 
-  constructor(private certificationService: CertificationService, public modalInfo: MatDialog) { }
+  constructor(private certificationService: CertificationService, public modalInfo: MatDialog, private snackbar: MatSnackBar) { }
+
+  customFilterPredicate(data: any, filters: ITableFilter[]):boolean{
+    for(let i = 0; i< filters.length; i++){
+      let fitsThisFilter;
+      if( data[filters[i].column]){
+        fitsThisFilter = data[filters[i].column].includes(filters[i].value);
+      }
+      if(!fitsThisFilter){
+        return false;
+      }
+    }
+    return true;
+    }
 
   ngOnInit() {
     this.getCertifications();
@@ -38,6 +64,7 @@ export class CertificationListComponent implements OnInit {
         this.certifications = res;
         console.log(this.certifications);
         this.dataSource = new MatTableDataSource(this.certifications.data);
+        this.dataSource.filterPredicate = this.customFilterPredicate;
         this.dataSource.paginator = this.paginator;
       },
       err => console.error(err)
@@ -74,18 +101,41 @@ export class CertificationListComponent implements OnInit {
     )
   }
 
+   deleteCertification(row){
+    this.certificationService.deleteCertification(row.cer_id, row.com_id).subscribe(
+      res => {
+        this.getCertifications();
+        this.snackbar.open("¡Certificación eliminada correctamente!", "Cerrar", {
+          horizontalPosition: "center",
+          duration: 1000,
+        });
+      },
+      err => console.log(err)
+   )
+  }
+
   aplicarFiltro(event){
-    if(event.target){
-      const filterValue = (event.target as HTMLInputElement).value;
-      this.dataSource.filter = filterValue.trim().toLowerCase();
-    }
-    else{
-      let parametro: string = event.value;
-      this.dataSource.filter = parametro.trim().toLowerCase();
-    }
+    // let filter:string = "";
+    // Object.values(this.allInputs).forEach((val)=>{
+    //   filter += val;
+    // });
+    // console.log(filter)
+    // if(event.target){
+    //   const filterValue = (event.target as HTMLInputElement).value;
+    //   this.dataSource.filter = filterValue.trim().toLowerCase();
+    // }
+    // else{
+    //   let parametro: string = event.value;
+    //   this.dataSource.filter = parametro.trim().toLowerCase();
+    // }
+    this.dataSource.filter = this.arrayInputs;
   }
 
   abrirModal(element: any): void {
+    this.snackbar.open("¡Mostrando información!", "Cerrar", {
+      horizontalPosition: "center",
+      duration: 1000,
+    });
     const modalRef = this.modalInfo.open(ModalInfoComponent,{
       width: '750px',
       height: '580px',

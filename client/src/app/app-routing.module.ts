@@ -4,6 +4,7 @@ import { CompanyListComponent } from './components/company-list/company-list.com
 import { CompanyFormComponent } from './components/company-form/company-form.component';
 import { CompanyEditComponent } from './components/company-edit/company-edit.component';
 import { CertificationListComponent } from './components/certification-list/certification-list.component';
+import { CertificationEditComponent } from './components/certification-edit/certification-edit.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,9 @@ const routes: Routes = [
   },{
     path: 'certificaciones',
     component: CertificationListComponent
+  },{
+    path: 'certificaciones/editar/:id',
+    component: CertificationEditComponent
   }
 ];
 

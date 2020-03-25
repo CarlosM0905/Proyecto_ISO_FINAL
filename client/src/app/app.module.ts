@@ -21,6 +21,7 @@ import { CertificationListComponent } from './components/certification-list/cert
 import { ListService } from './services/list.service';
 import { CertificationService } from './services/certification.service';
 import { ModalInfoComponent } from './components/modal-info/modal-info.component';
+import { CertificationEditComponent } from './components/certification-edit/certification-edit.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ModalInfoComponent } from './components/modal-info/modal-info.component
     ModalComponent,
     CertificationListComponent,
     ModalInfoComponent,
+    CertificationEditComponent,
   ],
   imports: [
     BrowserModule,
