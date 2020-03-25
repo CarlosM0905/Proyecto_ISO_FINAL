@@ -4,11 +4,17 @@ import {ListService} from '../../services/list.service'
 import {Company } from '../../models/Company';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import {dd} from '../../files/pdfEmpresas'
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+interface ITableFilter{
+  column: string;
+  value: any;
+}
 
 @Component({
   selector: 'app-company-list',
@@ -28,14 +34,36 @@ export class CompanyListComponent implements OnInit, OnDestroy {
     com_phone: "",
   }
 
+  inputName = {column:"com_name", value: ""};
+  inputAddress = {column: "com_address", value: ""};
+  inputProvince = {column: "com_province", value: ""};
+  inputCategory = {column: "com_category", value: ""};
+  inputPhone = {column: "com_phone", value: ""};
+
+  arrayInputs = [this.inputName, this.inputAddress, this.inputProvince, this.inputCategory, this.inputPhone];
+
   displayedColumns:string[] = ['nombre','direccion','provincia','telefono','categoria','editar','eliminar'];
   dataSource;
 
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
 
-  constructor(private companiesService : CompaniesService, private listService: ListService) {
+  constructor(private companiesService : CompaniesService, private listService: ListService, private snackbar: MatSnackBar) {
     
    }
+  
+   customFilterPredicate(data: any, filters: ITableFilter[]):boolean{
+    for(let i = 0; i< filters.length; i++){
+      let fitsThisFilter;
+      if( data[filters[i].column]){
+        fitsThisFilter = data[filters[i].column].includes(filters[i].value);
+      }
+      if(!fitsThisFilter){
+        return false;
+      }
+    }
+    return true;
+    }
+   
   
   ngOnInit() {
     this.getCompanies();
@@ -66,6 +94,7 @@ export class CompanyListComponent implements OnInit, OnDestroy {
       res => {
         this.companies = res;
         this.dataSource = new MatTableDataSource(this.companies);
+        this.dataSource.filterPredicate = this.customFilterPredicate;
         this.dataSource.paginator = this.paginator;
       },
       err => console.error(err)
@@ -78,6 +107,10 @@ export class CompanyListComponent implements OnInit, OnDestroy {
     this.companiesService.deleteCompany(id).subscribe(
       res => {
         this.getCompanies();
+        this.snackbar.open("¡Empresa eliminada correctamente!", "Cerrar", {
+          horizontalPosition: "center",
+          duration: 1000,
+        });
       },
       err => console.log(err)
     );
@@ -91,11 +124,11 @@ export class CompanyListComponent implements OnInit, OnDestroy {
     this.dataSource.filteredData.forEach(element => {
       pdf.content[3]['table'].body.push(
         [
-          element.com_name,
-          element.com_address,
-          element.com_province,
-          element.com_phone,
-          element.com_category
+          {text: element.com_name, style: 'data'},
+          {text: element.com_address , style: 'data'},
+          {text: element.com_province , style: 'data'},
+          {text: element.com_phone , style: 'data'},
+          {text: element.com_category, style: 'data'}
         ]
       )
     });
@@ -108,14 +141,16 @@ export class CompanyListComponent implements OnInit, OnDestroy {
   }
   
   aplicarFiltro(event){
-    if(event.target){
-      const filterValue = (event.target as HTMLInputElement).value;
-      this.dataSource.filter = filterValue.trim().toLowerCase();
-    }
-    else{
-      let parametro: string = event.value;
-      this.dataSource.filter = parametro.trim().toLowerCase();
-    }
+    console.log(this.arrayInputs);
+    // if(event.target){
+    //   const filterValue = (event.target as HTMLInputElement).value;
+    //   this.dataSource.filter = filterValue.trim().toLowerCase();
+    // }
+    // else{
+    //   let parametro: string = event.value;
+    //   this.dataSource.filter = parametro.trim().toLowerCase();
+    // }
+    this.dataSource.filter = this.arrayInputs;
   }
   
 

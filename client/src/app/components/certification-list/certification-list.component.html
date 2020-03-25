@@ -33,6 +33,7 @@
                   <mat-form-field appearance="standard" style="width: 100%;">
                     <mat-label>Provincia</mat-label>
                     <mat-select [(ngModel)]="inputProvince.value" (selectionChange)="aplicarFiltro($event)">
+                      <mat-option [value]="''"></mat-option>
                       <mat-option *ngFor="let province of provinces.data" [value]="province.com_province">
                         {{province.com_province}}
                     </mat-option>
@@ -46,7 +47,8 @@
                   <mat-form-field appearance="standard" style="width: 100%;">
                     <mat-label>ISO</mat-label>
                     <mat-select [(ngModel)]="inputCertification.value" (selectionChange)="aplicarFiltro($event)">
-                    <mat-option *ngFor="let iso of isos.data" [value]="iso.cer_name">
+                      <mat-option [value]="''"></mat-option>
+                      <mat-option *ngFor="let iso of isos.data" [value]="iso.cer_name">
                       {{iso.cer_name}}
                     </mat-option>
                     </mat-select>
@@ -56,6 +58,7 @@
                   <mat-form-field appearance="standard" style="width: 100%;">
                     <mat-label>Categoria</mat-label>
                     <mat-select [(ngModel)]="inputCategory.value" (selectionChange)="aplicarFiltro($event)">
+                      <mat-option [value]="''"></mat-option>
                       <mat-option *ngFor="let category of categories.data" [value]="category.com_category">
                         {{category.com_category}}
                       </mat-option>
@@ -68,7 +71,7 @@
                 <div class="col-md-12" style="display: flex;
                 justify-content: flex-end;
                 align-items: center;">
-                  <button style="width: 25%;" mat-button mat-raised-button color="primary">Imprimir <mat-icon>print</mat-icon></button>
+                  <button style="width: 25%;" (click)="generatePdf()" mat-button mat-raised-button color="primary">Imprimir <mat-icon>print</mat-icon></button>
                 </div>
               </div>
               <mat-divider></mat-divider>
@@ -99,10 +102,10 @@
                     <th style="text-align: center; font-size: 15px; font-weight: bolder;" mat-header-cell *matHeaderCellDef>Info</th>
                     <td mat-cell *matCellDef="let element"><a type="button" class="info-btn" (click)="abrirModal(element)"><mat-icon>info</mat-icon></a></td>
                   </ng-container>
-                  <ng-container matColumnDef="editar">
+                  <!-- <ng-container matColumnDef="editar">
                     <th style="text-align: center; font-size: 15px; font-weight: bolder;" mat-header-cell *matHeaderCellDef>Editar</th>
                     <td mat-cell *matCellDef="let element"><a type="button" class="edit-btn" [routerLink]="[ '/certificaciones/editar', element.com_id]"><mat-icon>edit</mat-icon></a> </td>
-                  </ng-container>
+                  </ng-container> -->
                   <ng-container matColumnDef="eliminar">
                     <th style="text-align: center; font-size: 15px; font-weight: bolder;" mat-header-cell *matHeaderCellDef>Eliminar</th>
                     <td mat-cell *matCellDef="let element"><a  type="button" class="delete-btn" (click)="deleteCertification(element)"><mat-icon>delete</mat-icon></a></td>

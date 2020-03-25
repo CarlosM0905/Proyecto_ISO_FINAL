@@ -5,6 +5,11 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material';
 import { ModalInfoComponent } from '../modal-info/modal-info.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {df} from '../../files/pdfEmpresas'
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 interface ITableFilter{
     column: string;
@@ -26,7 +31,7 @@ export class CertificationListComponent implements OnInit {
 
   arrayInputs = [this.inputName, this.inputAddress, this.inputProvince, this.inputCategory, this.inputCertification];
 
-  displayedColumns:string[] = ['nombre','direccion','provincia','categoria','cer_nombre','informacion','editar','eliminar'];
+  displayedColumns:string[] = ['nombre','direccion','provincia','categoria','cer_nombre','informacion','eliminar'];
   dataSource;
 
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
@@ -145,6 +150,27 @@ export class CertificationListComponent implements OnInit {
     modalRef.afterClosed().subscribe(result => {
       console.log('El modal fue cerrado');
     })
+  }
+
+  generatePdf(){
+    let fechaActual: Date = new Date();
+    let pdf = {...df};
+    pdf.content[0]['text'] = `${fechaActual.getDate()}/${fechaActual.getMonth()+1}/${fechaActual.getFullYear()}`;
+    this.dataSource.filteredData.forEach(element => {
+      pdf.content[3]['table'].body.push(
+        [
+          {text: element.com_name, style: 'data'},
+          {text: element.com_address , style: 'data'},
+          {text: element.com_province , style: 'data'},
+          {text: element.com_phone , style: 'data'},
+          {text: element.cer_name, style: 'data'},
+          {text: element.com_category, style: 'data'}
+        ]
+      )
+    });
+    console.log(pdf);
+    pdfMake.createPdf(pdf).open();
+    pdf.content[3]['table'].body.splice(1);
   }
 
 }
