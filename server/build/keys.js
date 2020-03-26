@@ -2,10 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = {
     database: {
-        host: 'localhost',
+        host: 'bpvlk53jbtswcthriprw-mysql.services.clever-cloud.com',
         port: 3306,
-        user: 'root',
-        password: 'password',
-        database: 'project_iso'
+        user: 'uphlp4jwroz7tolh',
+        password: '8XhuI5hDzzABpRUw9muv',
+        database: 'bpvlk53jbtswcthriprw'
     }
 };

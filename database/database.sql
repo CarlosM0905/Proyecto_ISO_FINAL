@@ -7,8 +7,8 @@ CREATE TABLE company(
     com_name VARCHAR(1000) NOT NULL,
     com_address VARCHAR(1000),
     com_province VARCHAR(1000),
-    com_category VARCHAR (500),
-    com_phone VARCHAR(50)
+    com_phone VARCHAR(50),
+    com_category VARCHAR (500)
 );
 
 CREATE TABLE certifier(
